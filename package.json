@@ -9,9 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.2.3",
+    "axios": "^0.27.2",
+    "bootstrap": "5.2.0",
     "next": "12.2.5",
+    "node-fetch": "2.6.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.34.2",
+    "react-icons": "^4.4.0",
+    "react-switch": "6.0.0",
+    "recharts": "2.1.9"
   },
   "devDependencies": {
     "eslint": "8.22.0",

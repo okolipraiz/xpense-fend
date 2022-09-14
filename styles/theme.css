@@ -1,0 +1,69 @@
+/* THEME TOGGLE COLOR */
+#light {
+  background-color: #fff;
+  color: #333;
+}
+
+#dark {
+  background-color: #1a1d21;
+  color: #fff;
+}
+
+#light .side-bar{
+  background: #1f2c3e;
+    color: #fff;
+}
+
+#dark .side-bar{
+    background-color: #212529 !important;
+  color: #fff;
+}
+
+#light .side-bar-list li.active {
+  background-color: gray;
+  color: #fff;
+}
+
+#light .side-bar-list li:hover {
+  background-color: gray;
+  color: #fff;
+}
+
+#dark .side-bar-list li.active {
+  background-color: rgb(288, 288, 250);
+  color: #333;
+}
+
+#dark .side-bar-list li:hover {
+  background-color: rgb(288, 288, 250);
+  color: #333;
+}
+
+#light .coins {
+  background-color: gray;
+}
+
+#dark .coins {
+  background-color: black;
+}
+
+#light  .top .toggle {
+   display: block;
+   color: black;
+   z-index: 99;
+ }
+
+ #dark .top .toggle {
+   display: block;
+   color: white;
+   z-index: 99;
+ }
+
+ #light #responsive-nav {
+  background-color: white;
+  box-shadow: 0 8px 10px rgb(0 0 0 / 5%);
+}
+
+ #dark #responsive-nav {
+   background-color: black;
+ }
