@@ -4,7 +4,7 @@ import { IoIosSend } from "react-icons/io";
 
 import RenderLineChart from './RenderLineChart'
 
-const AccountCharts = () => {
+const AccountCharts = () => { 
     return (
         <Fragment>
             <div className="d-flex justify-content-between align-items-center mt-3">

@@ -5,14 +5,17 @@ import {
     QueryClientProvider,
     useQuery,
 } from "@tanstack/react-query";
+import NextNProgress from "nextjs-progressbar";
+import {SessionProvider} from "next-auth/react"
 
 import "bootstrap/dist/css/bootstrap.css";
+import "../styles/theme.css";
 import "../styles/globals.css";
-import "../styles/theme.css"
+
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }) {           
+function MyApp({ Component, pageProps: {session, ...pageProps}}) {           
     
     return (
         <>
@@ -35,9 +38,18 @@ function MyApp({ Component, pageProps }) {
 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
-            </QueryClientProvider>
+            <NextNProgress
+                color="#017993"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height={3}
+                showOnShallow={true}
+            />
+            <SessionProvider session={session}>
+                <QueryClientProvider client={queryClient}>
+                    <Component {...pageProps} />
+                </QueryClientProvider>
+            </SessionProvider>
             <Script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

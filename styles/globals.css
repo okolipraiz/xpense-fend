@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  /* outline: 3px solid green; */
   padding: 0;
   margin: 0;
 }
@@ -86,8 +85,6 @@ a {
   background-color: grey;
   border-color: transparent;
 }
-
-
 
 .home {
   flex: 4;

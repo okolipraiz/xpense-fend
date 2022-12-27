@@ -1,7 +1,7 @@
 /* THEME TOGGLE COLOR */
 #light {
   background-color: #fff;
-  color: #333;
+  color: #333 !important;
 }
 
 #dark {
@@ -10,8 +10,8 @@
 }
 
 #light .side-bar{
-  background: #1f2c3e;
-    color: #fff;
+  background: #1f2c3e !important;
+  color: #fff;
 }
 
 #dark .side-bar{

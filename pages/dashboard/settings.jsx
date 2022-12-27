@@ -5,7 +5,7 @@ const Settings = () => {
   return (
       <DashboardLayout>
           <section className="home">
-              <div className="pt-5">happy</div>
+              <div className="pt-5">Settings</div>
           </section>
       </DashboardLayout>
   );

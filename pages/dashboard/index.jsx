@@ -1,4 +1,4 @@
-// import DashboardLayout from "../../components/layouts/DashboardLayout";
+import DashboardLayout from "../../components/layouts/DashboardLayout";
 import Link from "next/link";
 import AccountCharts from "../../components/AccountCharts";
 import { useGetAccount } from "../../hooks/account";
@@ -6,13 +6,7 @@ import { useGetNotes } from "../../hooks/notes";
 import { AiFillEdit } from "react-icons/ai";
 import { IoIosOpen } from "react-icons/io";
 import { VscTrash, VscEdit } from "react-icons/vsc";
-import { CgSpinner } from 'react-icons/cg'
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
-const DashboardLayout = dynamic(() => import("../../components/layouts/DashboardLayout"), {
-    suspense: false,
-});
 
 const greetingsMessage = () => {
     const hours = new Date().getHours();
@@ -36,20 +30,16 @@ const greetingsMessage = () => {
 const Dashboard = () => {
     // const accountId = 1;
     const { data: account } = useGetAccount();
-    const { data: notes, isLoading } = useGetNotes();
-
-    // console.log(notes);
-
-   
-return (
-    <Suspense fallback={`Loading...`}>
+    const { data: notes } = useGetNotes();
+    
+    return (
         <DashboardLayout>
             <section className="home">
                 <div className="d-flex justify-content-between pt-4">
                     <div>
                         <h2>Dashboard</h2>
                         <p>
-                            {greetingsMessage()}, {account?.first_name}!
+                            {greetingsMessage()}, Praise!
                         </p>
                     </div>
                     <div className="d-flex justify-content-end">
@@ -189,15 +179,6 @@ return (
                                 </div>
                             </div>
 
-                            {isLoading && (
-                                <div className="d-flex justify-content-center align-item-center py-4">
-                                    <CgSpinner
-                                        className="all-page-spinner "
-                                        size="30px"
-                                    />
-                                </div>
-                            )}
-
                             <div
                                 className="mt-3"
                                 style={{
@@ -206,10 +187,7 @@ return (
                             >
                                 {notes?.slice(0, 3).map((note, index) => (
                                     <ul
-                                        style={{
-                                            listStyle: "none",
-                                            paddingLeft: "0",
-                                        }}
+                                        style={{ listStyle: "none",  paddingLeft: "0" }}
                                         key={index}
                                     >
                                         <li>{note.note}</li>
@@ -221,8 +199,7 @@ return (
                 </div>
             </section>
         </DashboardLayout>
-    </Suspense>
-);
+    );
 };
 
 export default Dashboard;
