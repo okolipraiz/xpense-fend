@@ -17,6 +17,11 @@ export const authOptions = {
         // ...add more providers here
     ],
     secret: process.env.JWT_SECRET,
+    pages: {
+        signIn: '/auth/login',
+        signOut: '/auth/login',
+        error: '/auth/login', // Error code passed in query string as ?error=
+    }
 };
 
 export default NextAuth(authOptions);

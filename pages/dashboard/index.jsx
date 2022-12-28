@@ -6,6 +6,7 @@ import { useGetNotes } from "../../hooks/notes";
 import { AiFillEdit } from "react-icons/ai";
 import { IoIosOpen } from "react-icons/io";
 import { VscTrash, VscEdit } from "react-icons/vsc";
+import { useSession } from "next-auth/react";
 
 
 const greetingsMessage = () => {
@@ -31,6 +32,7 @@ const Dashboard = () => {
     // const accountId = 1;
     const { data: account } = useGetAccount();
     const { data: notes } = useGetNotes();
+    const { data: session } = useSession();
     
     return (
         <DashboardLayout>
@@ -39,7 +41,7 @@ const Dashboard = () => {
                     <div>
                         <h2>Dashboard</h2>
                         <p>
-                            {greetingsMessage()}, Praise!
+                            {greetingsMessage()}, {session?.user?.name}!
                         </p>
                     </div>
                     <div className="d-flex justify-content-end">
@@ -139,7 +141,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <AccountCharts />
+                        <AccountCharts/>
                     </div>
 
                     <div className="col-md-3">

@@ -1,6 +1,6 @@
 /* THEME TOGGLE COLOR */
 #light {
-  background-color: #fff;
+  background-color: #fff !important;
   color: #333 !important;
 }
 

@@ -16,8 +16,8 @@ export const ThemeContext = createContext(null);
 
 const DashboardLayout = ({ children }) => {
     const { route } = useRouter();
-    const { data: account } = useGetAccount();
-    const { data: session, status } = useSession();
+    const { data: session, status } = useSession({ required: true });
+    // const data = 
     // console.log(session)
     
      const [navbarState, setNavbarState] = useState(false);
@@ -29,7 +29,7 @@ const DashboardLayout = ({ children }) => {
 
      useEffect(() => {
          const getTheme = () => {
-             return window.localStorage.getItem("theme", theme);
+            return window.localStorage.getItem("theme") ?? window.localStorage.setItem("theme", "light") ?? "light";
          };
          setTheme(getTheme());
      }, [theme]);
@@ -168,14 +168,10 @@ const DashboardLayout = ({ children }) => {
                                                     ? "active"
                                                     : ""
                                             }
+                                            onClick={() => signOut({ redirect: false, callbackUrl: "/auth/login" })}
                                         >
                                             <GoSignOut size="17" />
-                                            <span
-                                                className="mx-2"
-                                                onClick={() => signOut()}
-                                            >
-                                                Logout
-                                            </span>
+                                            <span className="mx-2">Logout</span>
                                         </li>
 
                                         <li className="switch">
@@ -210,7 +206,7 @@ const DashboardLayout = ({ children }) => {
                             <div className="side-bar-menu">
                                 <h6 className="side-bar-title">Xpense</h6>
                                 <span style={{ fontSize: "12px" }}>
-                                    {account?.email}
+                                    {session.user.name}
                                 </span>
                                 <ul className="side-bar-list">
                                     <Link href="/dashboard">
@@ -290,18 +286,18 @@ const DashboardLayout = ({ children }) => {
                                             ? "active"
                                             : ""
                                     }
+                                    onClick={() => signOut()}
                                 >
                                     <GoSignOut size="17" />
-                                    <span
-                                        className="mx-2"
-                                        onClick={() => signOut()}
-                                    >
-                                        Logout
-                                    </span>
+                                    <span className="mx-2">Logout</span>
                                 </li>
 
                                 <li className="">
-                                    <div className="form-check form-switch">
+                                    <div
+                                        className="form-check form-switch"
+                                        onChange={toggleTheme}
+                                        checked={theme === "dark"}
+                                    >
                                         <label
                                             className="form-check-label"
                                             htmlFor="flexSwitchCheckDefault"
@@ -313,8 +309,6 @@ const DashboardLayout = ({ children }) => {
                                             type="checkbox"
                                             role="switch"
                                             id="flexSwitchCheckDefault"
-                                            onChange={toggleTheme}
-                                            checked={theme === "dark"}
                                         />
                                     </div>
                                 </li>
